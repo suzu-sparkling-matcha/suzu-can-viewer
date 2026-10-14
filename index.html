@@ -77,10 +77,10 @@
     import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
     import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 
-    // ‚îÄ‚îÄ‚îÄ CONFIG ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ
+    // ─── CONFIG ──────────────────────────────────────────────────────────────
     // When embedding in Webflow:
     //   1. Upload SUZU_can.glb to Webflow Assets
-    //   2. Replace GLB_URL with the Webflow CDN URL (e.g. "https://uploads-ssl.webflow.com/‚Ä¶/SUZU_can.glb")
+    //   2. Replace GLB_URL with the Webflow CDN URL (e.g. "https://uploads-ssl.webflow.com/…/SUZU_can.glb")
     const GLB_URL = './suzu_upload_SUZU_can.glb';
 
     const CAMERA_FOV      = 38;
@@ -91,12 +91,12 @@
     const AUTO_ROTATE_SPEED = 1.2;   // degrees/frame factor
     const ENV_INTENSITY   = 0.55;
     const EXPOSURE        = 0.78;
-    // ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ
+    // ─────────────────────────────────────────────────────────────────────────
 
     const wrap   = document.getElementById('canvas-wrap');
     const loader = document.getElementById('loader');
 
-    // ‚îÄ‚îÄ Renderer ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ
+    // ── Renderer ─────────────────────────────────────────────────────────────
     const renderer = new THREE.WebGLRenderer({
       antialias: true,
       alpha: true,          // transparent canvas background
@@ -110,7 +110,7 @@
     renderer.shadowMap.enabled  = false;
     wrap.appendChild(renderer.domElement);
 
-    // ‚îÄ‚îÄ Scene & Camera ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ
+    // ── Scene & Camera ────────────────────────────────────────────────────────
     const scene  = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
       CAMERA_FOV,
@@ -120,14 +120,14 @@
     );
     camera.position.set(0, CAMERA_HEIGHT, CAMERA_DISTANCE);
 
-    // ‚îÄ‚îÄ Environment (studio room ‚Äî ideal for metallic PBR) ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ
+    // ── Environment (studio room — ideal for metallic PBR) ────────────────────
     const pmrem = new THREE.PMREMGenerator(renderer);
     pmrem.compileEquirectangularShader();
     const envTexture = pmrem.fromScene(new RoomEnvironment(renderer), 0.04).texture;
     scene.environment          = envTexture;
     scene.environmentIntensity = ENV_INTENSITY;
 
-    // ‚îÄ‚îÄ Studio lights (key + fill + rim) ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ
+    // ── Studio lights (key + fill + rim) ─────────────────────────────────────
     const keyLight = new THREE.DirectionalLight(0xd0e8ff, 1.8);
     keyLight.position.set(1.5, 2.0, 1.5);
     scene.add(keyLight);
@@ -140,7 +140,7 @@
     rimLight.position.set(0, 1.0, -2.0);
     scene.add(rimLight);
 
-    // ‚îÄ‚îÄ Controls ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ
+    // ── Controls ──────────────────────────────────────────────────────────────
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.target.set(0, 0.015, 0);
     controls.enableDamping   = true;
@@ -154,11 +154,11 @@
     controls.maxPolarAngle   = Math.PI * 0.80;
     controls.update();
 
-    // ‚îÄ‚îÄ Pause auto-rotate while user drags ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ
+    // ── Pause auto-rotate while user drags ───────────────────────────────────
     renderer.domElement.addEventListener('pointerdown', () => { controls.autoRotate = false; });
     renderer.domElement.addEventListener('pointerup',   () => { controls.autoRotate = true;  });
 
-    // ‚îÄ‚îÄ Load GLB ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ
+    // ── Load GLB ──────────────────────────────────────────────────────────────
     let canModel = null;
 
     const dracoLoader = new DRACOLoader();
@@ -182,15 +182,19 @@
         // Fix materials for TurboSquid PBR can + water-drop overlay.
         // The metallic map from TurboSquid drives values near 1.0, which at full
         // strength makes the PBR material fully mirror-like and hides the SUZU label.
-        // Capping metalness at 0.25 (√ó map value ‚âà 0.15‚Äì0.22) lets the base-color
+        // Capping metalness at 0.25 (× map value ≈ 0.15–0.22) lets the base-color
         // label show while keeping the aluminium character.
-        // Three-layer sandwich: can body (metallic) ‚Üí label band (non-metallic) ‚Üí water drops
+        // Three-layer sandwich: can body (metallic) → label band (non-metallic) → water drops
         canModel.traverse((node) => {
           if (node.isMesh && node.material) {
             const mats = Array.isArray(node.material) ? node.material : [node.material];
             const name = (node.name || '').toLowerCase();
             mats.forEach((mat) => {
-              if (mat.map) mat.map.colorSpace = THREE.SRGBColorSpace;
+              if (mat.map) {
+                mat.map.colorSpace = THREE.SRGBColorSpace;
+                // Keeps label text crisp where the can curves away from the camera
+                mat.map.anisotropy = renderer.capabilities.getMaxAnisotropy();
+              }
 
               if (name.includes('label_band')) {
                 // Label band: non-metallic so base-color shows through.
@@ -246,7 +250,7 @@
       }
     );
 
-    // ‚îÄ‚îÄ GSAP ScrollTrigger ‚Äî scroll drives Y rotation ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ
+    // ── GSAP ScrollTrigger — scroll drives Y rotation ─────────────────────────
     // Works when this file is embedded inside a Webflow page that has a scroll container.
     // The can completes one full rotation over 100 vh of scroll.
     if (typeof ScrollTrigger !== 'undefined') {
@@ -268,7 +272,7 @@
       window.__suzuScroll = scrollState;
     }
 
-    // ‚îÄ‚îÄ Resize ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ
+    // ── Resize ────────────────────────────────────────────────────────────────
     const onResize = () => {
       const w = wrap.clientWidth;
       const h = wrap.clientHeight;
@@ -278,7 +282,7 @@
     };
     window.addEventListener('resize', onResize);
 
-    // ‚îÄ‚îÄ Render loop ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ‚îÄ
+    // ── Render loop ───────────────────────────────────────────────────────────
     const clock = new THREE.Clock();
 
     function animate() {
